@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Parcial</a> &gt; <a href="index.source.html" class="el_package">eci.cvds.parcialPrimerTercio.Parcial.Service</a> &gt; <span class="el_source">ProductService.java</span></div><h1>ProductService.java</h1><pre class="source lang-java linenums">package eci.cvds.parcialPrimerTercio.Parcial.Service;
+
+import eci.cvds.parcialPrimerTercio.Parcial.Model.ProductModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+
+@Service
+public class ProductService {
+
+    private HashMap&lt;String, ProductModel&gt; products;
+
+    /**
+     * Constructor of the class
+     */
+    @Autowired
+<span class="fc" id="L18">    public ProductService() {</span>
+<span class="fc" id="L19">        products = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L20">    }</span>
+
+    /**
+     * Method that reurn all exsisitng products
+     *
+     * @return HashMap&lt;String, ProductModel&gt; with all products
+     */
+    public HashMap&lt;String, ProductModel&gt; getProducts() {
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        if (products.isEmpty()) {</span>
+<span class="fc" id="L29">            throw new RuntimeException(&quot;No hay productos&quot;);</span>
+        }
+<span class="fc" id="L31">        return products;</span>
+    }
+
+    /**
+     * Method that add a product to the list
+     *
+     * @param product ProductModel to add
+     * @return boolean that indicates if the product was added
+     */
+    public boolean addProduct(ProductModel product) {
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (product == null) {</span>
+<span class="fc" id="L42">            throw new RuntimeException(&quot;The product Don´t exists&quot;);</span>
+        }
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        if (products.get(product.getName()) != null) {</span>
+<span class="fc" id="L45">            throw new RuntimeException(&quot;The product already exists&quot;);</span>
+        }
+
+<span class="fc" id="L48">        products.put(product.getName(), product);</span>
+<span class="fc" id="L49">        return true;</span>
+    }
+
+    /**
+     * Method that update the stock of a product
+     * @param nameProduct String with the name of the product
+     * @param stock int with the new quantity
+     * @return boolean that indicates if the stock was updated
+     */
+    public boolean updateProduct(String nameProduct, int stock){
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if(products.get(nameProduct) == null){</span>
+<span class="fc" id="L60">            throw new RuntimeException(&quot;The product Don´t exists&quot;);</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        }else if(stock &lt; 0){</span>
+<span class="fc" id="L62">            throw new RuntimeException(&quot;You can´t have a negative stock&quot;);</span>
+        }
+<span class="fc" id="L64">        products.get(nameProduct).setStock(stock);</span>
+<span class="fc" id="L65">        return true;</span>
+    }
+
+    /**
+     * Method that delete a product from the list
+     * @param name String with the name of the product
+     * @return boolean that indicates if the product was deleted
+     */
+    public boolean deleteProduct(String name) {
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (products.get(name) == null) {</span>
+<span class="fc" id="L75">            throw new RuntimeException(&quot;The product Don´t exists&quot;);</span>
+        }
+<span class="fc" id="L77">        products.remove(name);</span>
+<span class="fc" id="L78">        return true;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

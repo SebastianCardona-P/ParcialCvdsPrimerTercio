@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Parcial</a> &gt; <a href="index.source.html" class="el_package">eci.cvds.parcialPrimerTercio.Parcial.Model</a> &gt; <span class="el_source">ProductModel.java</span></div><h1>ProductModel.java</h1><pre class="source lang-java linenums">package eci.cvds.parcialPrimerTercio.Parcial.Model;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class ProductModel {
+
+    private String name;
+    private double price;
+    private int stock;
+
+    private String category;
+
+
+    /**
+     * Constructor of the class
+     * @param name
+     * @param price
+     * @param stock
+     * @param category
+     *
+     */
+<span class="fc" id="L25">    public ProductModel(String name, double price, int stock, String category) {</span>
+<span class="fc" id="L26">        this.name = name;</span>
+<span class="fc" id="L27">        this.price = price;</span>
+<span class="fc" id="L28">        this.stock = stock;</span>
+<span class="fc" id="L29">        this.category = category;</span>
+<span class="fc" id="L30">    }</span>
+
+    /**
+     * Get the name of the product
+     * @return
+     */
+    public String getName() {
+<span class="fc" id="L37">        return name;</span>
+    }
+
+    /**
+     * Get the stock of the product
+     * @param stock
+     */
+    public void setStock(int stock) {
+<span class="fc" id="L45">        this.stock = stock;</span>
+<span class="fc" id="L46">    }</span>
+
+    /**
+     * Get the stock of the product
+     * @return
+     */
+    public int getStock() {
+<span class="fc" id="L53">        return stock;</span>
+    }
+
+    /**
+     * Get the price of the product
+     * @return
+     */
+    public double getPrice() {
+<span class="fc" id="L61">        return price;</span>
+    }
+
+    /**
+     * Get the category of the product
+     * @return
+     */
+    public String getCategory() {
+<span class="fc" id="L69">        return category;</span>
+    }
+
+    /**
+     * Set the category of the product
+     * @param category
+     */
+    public void setCategory(String category) {
+<span class="fc" id="L77">        this.category = category;</span>
+<span class="fc" id="L78">    }</span>
+
+    /**
+     * Set the price of the product
+     * @param price
+     */
+    public void setPrice(double price) {
+<span class="fc" id="L85">        this.price = price;</span>
+<span class="fc" id="L86">    }</span>
+
+    public void setName(String name) {
+<span class="fc" id="L89">        this.name = name;</span>
+<span class="fc" id="L90">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

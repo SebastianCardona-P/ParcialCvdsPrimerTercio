@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Parcial</a> &gt; <a href="index.source.html" class="el_package">eci.cvds.parcialPrimerTercio.Parcial.Controller</a> &gt; <span class="el_source">ProductController.java</span></div><h1>ProductController.java</h1><pre class="source lang-java linenums">package eci.cvds.parcialPrimerTercio.Parcial.Controller;
+
+import eci.cvds.parcialPrimerTercio.Parcial.Model.ProductModel;
+import eci.cvds.parcialPrimerTercio.Parcial.Service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+
+import java.util.HashMap;
+
+@RestController
+@RequestMapping(&quot;/product&quot;)
+<span class="fc" id="L15">public class ProductController {</span>
+
+    @Autowired
+    private ProductService productService;
+
+
+    /**
+     * Method that return all existing products
+     * @return
+     */
+    @GetMapping(&quot;/getAll&quot;)
+    public HashMap&lt;String, ProductModel&gt; getAllProducts(){
+        try {
+<span class="nc" id="L28">            return productService.getProducts();</span>
+<span class="nc" id="L29">        } catch (Exception e) {</span>
+<span class="nc" id="L30">            throw new RuntimeException(&quot;No hay productos&quot;);</span>
+        }
+    }
+
+    /**
+     * method that return a product by its name
+     * @param product
+     * @return
+     */
+    @PostMapping(&quot;/add&quot;)
+    public ResponseEntity&lt;?&gt; saveProduct(@RequestBody ProductModel product){
+<span class="nc" id="L41">        return ResponseEntity.status(HttpStatus.OK).body(productService.addProduct(product));</span>
+    }
+
+    /**
+     * Method that update the stock of a product
+     * @param name
+     * @param stock
+     * @return
+     */
+    @PutMapping(&quot;/update/{name}/{stock}&quot;)
+    public ResponseEntity&lt;?&gt; updateProduct(@PathVariable String name, @PathVariable int stock){
+        try{
+<span class="nc" id="L53">            return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(name,stock));</span>
+<span class="nc" id="L54">        }catch (Exception e){</span>
+<span class="nc" id="L55">            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);</span>
+        }
+    }
+
+    /**
+     * Method that delete a product by its name
+     * @param name
+     * @return
+     */
+    @DeleteMapping(&quot;/delete/{name}&quot;)
+    public ResponseEntity&lt;?&gt; deleteProduct(@PathVariable String name){
+        try{
+<span class="nc" id="L67">            return ResponseEntity.status(HttpStatus.OK).body(productService.deleteProduct(name));</span>
+<span class="nc" id="L68">        }catch (Exception e){</span>
+<span class="nc" id="L69">            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

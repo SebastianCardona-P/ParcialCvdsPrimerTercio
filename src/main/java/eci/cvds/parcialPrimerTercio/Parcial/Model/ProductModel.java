@@ -84,4 +84,8 @@ public class ProductModel {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

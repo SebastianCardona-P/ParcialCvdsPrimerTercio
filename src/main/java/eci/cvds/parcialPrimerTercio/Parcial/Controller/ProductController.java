@@ -33,11 +33,11 @@ public class ProductController {
 
     /**
      * method that return a product by its name
-     * @param product
+     *
      * @return
      */
     @PostMapping("/add")
-    public ResponseEntity<?> saveProduct(@RequestBody ProductModel product){
+    public ResponseEntity<?> addProduct(@RequestBody ProductModel product){
         return ResponseEntity.status(HttpStatus.OK).body(productService.addProduct(product));
     }
 
