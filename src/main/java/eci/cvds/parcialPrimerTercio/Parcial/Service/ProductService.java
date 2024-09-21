@@ -1,21 +1,30 @@
 package eci.cvds.parcialPrimerTercio.Parcial.Service;
 
+import eci.cvds.parcialPrimerTercio.Parcial.Model.AgentAlert;
+import eci.cvds.parcialPrimerTercio.Parcial.Model.AgenLog;
 import eci.cvds.parcialPrimerTercio.Parcial.Model.ProductModel;
+import eci.cvds.parcialPrimerTercio.Parcial.Model.Subscriber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class ProductService {
 
     private HashMap<String, ProductModel> products;
 
+    private List<Subscriber> subscribers = new ArrayList<>();
+
     /**
      * Constructor of the class
      */
     @Autowired
-    public ProductService() {
+    public ProductService(AgenLog logAgent, AgentAlert alertAgent) {
+        this.subscribers.add(logAgent);
+        this.subscribers.add(alertAgent);
         products = new HashMap<>();
     }
 
@@ -62,6 +71,9 @@ public class ProductService {
             throw new RuntimeException("You can´t have a negative stock");
         }
         products.get(nameProduct).setStock(stock);
+        for(Subscriber sub: subscribers){
+            sub.notifyChange(products.get(nameProduct).getName(),stock);
+        }
         return true;
     }
 
@@ -78,4 +90,7 @@ public class ProductService {
         return true;
     }
 
+    public Subscriber[] getSubscribers() {
+        return subscribers.toArray(new Subscriber[0]);
+    }
 }

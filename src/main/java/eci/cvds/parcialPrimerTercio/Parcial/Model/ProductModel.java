@@ -15,6 +15,13 @@ public class ProductModel {
 
 
     /**
+     * EmptyConstructor
+     */
+    public ProductModel() {
+
+    }
+
+    /**
      * Constructor of the class
      * @param name
      * @param price
@@ -52,6 +59,8 @@ public class ProductModel {
     public int getStock() {
         return stock;
     }
+
+
 
     /**
      * Get the price of the product

@@ -2,5 +2,6 @@ eci\cvds\parcialPrimerTercio\Parcial\Model\AgenLog.class
 eci\cvds\parcialPrimerTercio\Parcial\Model\ProductModel.class
 eci\cvds\parcialPrimerTercio\Parcial\Controller\ProductController.class
 eci\cvds\parcialPrimerTercio\Parcial\Service\ProductService.class
+eci\cvds\parcialPrimerTercio\Parcial\Model\AgentAlert.class
 eci\cvds\parcialPrimerTercio\Parcial\Model\Subscriber.class
 eci\cvds\parcialPrimerTercio\Parcial\ParcialApplication.class
